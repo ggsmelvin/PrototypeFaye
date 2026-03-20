@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype For Faye</title>
+
+<style>
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #0f0f0f;
+    color: #ffffff;
+}
+
+.header {
+    width: 100%;
+    height: 400px;
+    background-image: url("assets/HeaderFaye.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.voice-note {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.track {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #1b1b1b;
+    border-radius: 10px;
+}
+
+.reveal-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.reveal-btn:hover {
+    background: #3a3a3a;
+}
+
+.hidden-note {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #0f0f0f;
+    border-left: 3px solid #555;
+    border-radius: 6px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    opacity: 0.6;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.hidden-note a {
+    color: #ff3b3b;
+}
+
+.spotify-link {
+    color: #1DB954;
+    font-weight: bold;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.gallery img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+}
+
+.lightbox-caption {
+    margin-top: 12px;
+    padding: 10px 14px;
+    max-width: 800px;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(15, 15, 15, 0.85);
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header"></div>
+
+<div class="container">
+
+<h1>RawrXD</h1>
+
+<div class="voice-note">
+<p>Description underneath voice note
+</p>
+
+<audio controls>
+<source src="assets/FV.m4a" type="audio/mp4">
+Your browser does not support the audio element.
+</audio>
+</div>
+
+<div class="track">
+<strong>Gloria (Patti Smith)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/bPO0bTaWcFQ?si=eOARmZ5bd7p7_qzu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note1')">READ THIS AS THE SONG IS PLAYING</button>
+
+<div id="note1" class="hidden-note">
+Patti Smith is the baddest bitch of all time. I found out about her through a book she wrote called "Just Kids" (which you need to read). She talks about her early 20's in New York City int he 60's and meeting this guy Robert Maplethorpe (In the 2nd pic down there) and how they fall in love and struggle as artists together and how she kind of makes her way from.. well, the bottom of the bottom.. to being a realized 'successful' artist. Again, she's the baddest of all time. Super dope authentic 60's hippie woman.
+</div>
+</div>
+
+<div class="track">
+<strong>Say Yes (Elliot Smith)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IdroEbyrB3s?si=6-wrvxW1AtA0Um2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note2')">Read WHILE you listen</button>
+
+<div id="note2" class="hidden-note">
+If you haven't seen Good Will Hunting... I highly encourage you to do so lol. I just watched it a couple nights ago and this guy's music soundtracks the whole thing and it's MAGIC.
+</div>
+</div>
+
+<div class="track">
+<strong>Clementine (Elliot Smith)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dwsSbAKs3yo?si=ZvlgkD1jiF-2QsdE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note3')">Click AFTER you watch</button>
+
+<div id="note3" class="hidden-note">
+This song isn't in the movie.. But like, it's my favorite Elliot Smith song and it feels good to listen to after that last one lol.
+</div>
+</div>
+
+<div class="track">
+<strong>Pumpkin (Been Stellar)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xE9z5_esL8U?si=lSHpHlWM1p6nn8Qk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note4')">Click AFTER you listen</button>
+
+<div id="note4" class="hidden-note">
+Been Stellar is a dope, NYC based indie band. They're signed to DirtyHit, which is an independent record label that Matty Healy from The 1975 started. He uses all the money the band makes to throw at dope, young artists.. Bleachers, Beebadoobee, etc. are also signed to DirtyHit.. so like, they're dope lol. I didn't add this track to the playlist.. but the 2 on the playlist are my favorite off their album 'Scream From New York, NY'.. which is a no skips album.
+</div>
+</div>
+
+<div class="track">
+<strong>Honey (Samia)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Tm5mxfP7OKY?si=D0cP8ReaclqdjeDh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note5')">Click AFTER you listen</button>
+
+<div id="note5" class="hidden-note">
+Samia is dope... idk what else to say like... She opened for Bleachers when I saw them up north at The Great Saltair in like.. idk 2024 or something. Her last 2 albums are full no skip albums, you'll dig for sure.
+</div>
+</div>
+
+<div class="track">
+<strong>You and Forever (Bleachers)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/I6ox7VKVzqU?si=eVDyETKzDn3pbrqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note6')">Click BEFORE you watch</button>
+
+<div id="note6" class="hidden-note">
+Bleachers are one of my favorite bands of all time... Jack Antonoff (who started Bleachers) was in this band called Fun that was huge when I was in high school and then he started this band and like.. ahh, he's just the best. I'm sure you know who he is. He produces like... Taylor Swift, Sabrina Carpenter, Kendrick Lamar.. like.. everyone's music these days lol.
+</div>
+</div>
+
+<div class="track">
+<strong>That Funny Feeling (Bo Burham)</strong><br>
+
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ObOqq1knVxs?si=hra-3sa3PJzTOaJS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<button class="reveal-btn" onclick="toggleNote('note7')">Read Before Listening!</button>
+
+<div id="note7" class="hidden-note">
+I put the Phoebe Bridgers song on the playlist. But Bo Burnham actually wrote this song as a part of his Netflix special "Inside"... Which is like one of my favorite works of art. The whole thing is hilarious and clever. I think this guy is a genius lol and I'm like 90% he's dating Phoebe Bridgers..
+</div>
+</div>
+
+<div class="track">
+<strong>Eighteen (Pale Waves)</strong><br>
+<div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ObOqq1knVxs?si=hra-3sa3PJzTOaJS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+    <button class="reveal-btn" onclick="toggleNote('note7')">Read Before Listening!</button>
+    
+<div id="note7" class="hidden-note">
+I saved this for last cuz this song absolutely fucks. This band opened for The 1975 when I saw them in 2019 and like blew me away. I was in GA right up at the front and I swear to god, seeing this girl on stage felt like I was dreaming lol. This was the song they closed with I'M PRETTY SURE... and honestly, it's what I remember the most even more than the actually 1975 concert itself lol. 
+</div>
+</div>
+
+
+<div style="text-align:center; margin-top:40px; margin-bottom:10px;">
+<h2>Here's The Spotify Playlist Link</h2>
+<p>
+Ideally.. the website would be able to just play all the full spotify songs on the site... But like.. Spotify only allows you to embed 30s previews.. which is why I linked YT videos.... ugh, see the web page is still a prototype lol.
+</p>
+<p>
+<a class="spotify-link" href="https://open.spotify.com/playlist/4gGnaEDgTsnc0l8GwY32a5?si=bde732e9bc88411f" target="_blank">Open Playlist</a>
+</p>
+</div>
+
+<h2 style="text-align:center;">Here's some pics to accompany the vibes</h2>
+
+<div class="gallery">
+<img src="assets/F1.jpeg" alt="Photo 1" data-caption="Patti Smith" onclick="openLightbox(this)">
+<img src="assets/FPS.jpeg" alt="Photo 2" data-caption="This photo is just good vibes, but the book is on the left there! It's called Just Kids and it's amazing." onclick="openLightbox(this)">
+<img src="assets/F2.jpeg" alt="Photo 3" data-caption="Patti Smith & Robert Maplethorpe I MEAN ARE YOU FUCKING KIDDING ME WITH THESE 2???" onclick="openLightbox(this)">
+<img src="assets/FES.jpeg" alt="Photo 4" data-caption="Elliot Smith is ULTIMATE 90's sad boy hours" onclick="openLightbox(this)">
+<img src="assets/FES2.jpeg" alt="Photo 5" data-caption="But daddy I love him, type beat." onclick="openLightbox(this)">
+<img src="assets/F3.jpeg" alt="Photo 6" data-caption="Been Stellar" onclick="openLightbox(this)">
+<img src="assets/F4.jpeg" alt="Photo 7" data-caption="Been Stellar again. Sick band. Sick band name." onclick="openLightbox(this)">
+<img src="assets/FSIA.jpeg" alt="Photo 8" data-caption="Samia." onclick="openLightbox(this)">
+<img src="assets/F5.jpeg" alt="Photo 9" data-caption="Pale Waves" onclick="openLightbox(this)">
+<img src="assets/F6.jpeg" alt="Photo 10" data-caption="Heather Baron Gracie, lead singer of Pale Waves (she's dope)" onclick="openLightbox(this)">
+<img src="assets/FJA.jpeg" alt="Photo 11" data-caption="Jack Antonoff" onclick="openLightbox(this)">
+<img src="assets/F7.jpeg" alt="Photo 12" data-caption="Evan Stephens Hall, Pinegrove lead singer" onclick="openLightbox(this)">
+<img src="assets/FME.jpeg" alt="Photo132" data-caption="And finally, here's ya boy for funzies, just to show you I'm really on the other side of the computer coding this shit lolllllll." onclick="openLightbox(this)">
+
+</div>
+
+<div class="footer">
+lolcatz rawrXD
+</div>
+
+</div>
+
+<script>
+function toggleNote(id) {
+const note = document.getElementById(id);
+
+if (note.style.display === "block") {
+note.style.display = "none";
+} else {
+note.style.display = "block";
+}
+}
+
+function openLightbox(image) {
+const lightbox = document.getElementById("lightbox");
+const img = document.getElementById("lightbox-img");
+const caption = document.getElementById("lightbox-caption");
+img.src = image.src;
+img.alt = image.alt || "Expanded gallery image";
+caption.textContent = image.dataset.caption || "";
+lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <img id="lightbox-img" alt="Expanded gallery image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
+
+</body>
+</html>
